@@ -1,0 +1,50 @@
+@startuml
+
+class game{
+    -count: int
+    -plays : lista<Strings>
+    +move(board,play)
+    +chooseGameModality()
+}
+
+game ..> board
+game ..> pieza
+board ..> pieza
+
+class board{
+    -piezas : pieza [][]
+    +getBoard()
+}
+
+class pieza{
+    -color : String
+    +movement()
+    +getColor()
+}
+
+class dama extends pieza{
+    +movement()
+}
+
+class rey extends pieza{
+    +movement()
+}
+
+class alfil extends pieza{
+    +movement()
+}
+
+class caballo extends pieza{
+    +movement()
+}
+
+class torre extends pieza{
+    +movement()
+}
+
+class peon extends pieza{
+    +movement()
+    +transform()
+}
+
+@enduml

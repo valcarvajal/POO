@@ -1,0 +1,34 @@
+@startuml
+
+class Monitor{
+    +showConfig(System)
+}
+Monitor ..> System
+
+class System{
+    +reconfigure(Nodo)
+    -ArrayList<Nodo>
+    +add(Nodo)
+    +delete(Nodo)
+}
+System ..> Nodo
+
+class Nodo {
+    -ID : int
+    -getID()
+    +reconfigure()
+}
+
+class anillo extends Nodo{
+    +reconfigure()
+}
+
+class bus extends Nodo{
+    +reconfigure()
+}
+
+class estrella extends Nodo{
+    +reconfigure()
+}
+
+@enduml

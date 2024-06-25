@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Valery Carvajal 2022314299
+Main-Class: BattleshipUI
+X-COMMENT: Abrir interfaz gráfica

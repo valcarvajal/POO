@@ -1,0 +1,63 @@
+@startuml
+
+class system{
+    - clients : lista<client>
+    - services: lista<service>
+    + GetClients()
+    + GetServices()
+    + RegisterClient()
+    + Charge()
+    - CreateReceipt()
+
+
+}
+class client{
+    - name: String 
+    - direction : String 
+    - cell: int 
+    - discounts: lista<int>
+    - cuentas : lista<cuenta>
+}
+
+note top of service : The different services extend from service
+
+class service{
+    - dateOfSubscription: date
+    - fechaDeBaja: date
+    - price: int
+    + printServiceInfo()
+}
+class basicServicePackage extends service{
+
+}
+class payPerView extends service{
+    -startDate: date
+    -endDate: date
+    -precio : int
+}
+class receipt{
+    - price: int 
+    - motive: String
+    - expirationDate: date  
+    + CalculatePayment()
+    - ApplyDiscount()
+
+}
+class account{
+    - ID : int
+    - active: Boolean
+    - services: lista<servicio>
+    - receipts: lista<factura>
+    + obtainAvailableEvents()
+    + printBillsToPay()
+
+}
+system ..> client
+system ..> service
+
+client ..> account
+
+account ..> service
+account ..> receipt
+
+@enduml

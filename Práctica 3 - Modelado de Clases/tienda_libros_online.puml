@@ -1,0 +1,52 @@
+@startuml
+
+class system {
+    shoppingCart: lista<Items>
+    +send()
+    +verifyUser()
+    +addToShoppingCart(item)
+    +deleteFromShoppingCart(item)
+    +print(Receipt)
+    +showStatistics(statistics)
+    -loadOrder()
+}
+
+system ..> statistics
+system ..> item
+system ..> user
+system ..> receipt
+
+statistics ..> item
+
+class statistics{
+    -BestSellers: lista<item> 
+    -BestSeller1Topic: lista<item> 
+    - Top-sellingAuthors: lista<String>
+    - AuthorsWithLessSales: lista<String>
+    + getPicks(item)
+    +getStats()
+}
+
+class receipt{
+    -listofDates : lista<Date>
+    -price: int
+}
+
+class user{
+    -name : String
+    -ID: int
+    -age: int
+    -pass: String
+}
+
+class item{
+    -disponibility: Boolean
+    -amountOfChoices : int
+    -price : int
+    -productNumber: int
+    +getInfo()
+}
+
+note top of item : All items that can be purchased extend from item
+
+@enduml

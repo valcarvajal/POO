@@ -1,0 +1,57 @@
+@startuml
+
+class system{
+    + registerPersonInterviewed()
+    + SendQuestionnaire()
+    - createAccount()
+    + ObtainStatistics()
+    + createQuestionnaire
+    + startSession()
+    - verifyPass()
+}
+
+system ..> statistics
+system --> person
+person --> account
+system ..> account
+system --> questionnaire
+
+questionnaire --> question
+statistics ..> question
+statistics ..> questionnaire
+
+class person{
+    - name: String 
+    - lastName: String
+    - user: String 
+    - mail: String 
+    - subject: lista<String>
+}
+
+class statistics{
+    AmountOfUsersThatAnswered: lista<question>
+    - ObtainUsersWhoAnswer(questionnaire)
+}
+
+class account{
+    - user: String
+    - pass: String
+}
+
+class questionnaire{
+    - accountsThatAnswered: lista<Account>
+    - subject: String
+    - questions : lista<question>
+    + addQuestion()
+}
+
+note  top of question: The option is a number between 0 and 3
+
+class question{
+    - amountOfAnswers: int
+    - selectedOption: int 
+    + selectAnswer()
+    
+}
+
+@enduml

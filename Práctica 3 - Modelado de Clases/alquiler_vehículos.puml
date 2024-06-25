@@ -1,0 +1,39 @@
+@startuml
+
+class system{
+    -vehicles: arrayList<vehicles>
+    -calculatePay()
+    +issueRent()
+    +createContact()
+    +submitReceipt()
+    +obtainInfoClient()
+}
+
+system ..> vehicle
+system ..> receipt
+system ..>client
+client ..>vehicle
+
+
+class receipt{
+    -hour: String
+    -incidents : lista<String>
+    -date : String  
+}
+
+class client{
+    -rentedCars: lista<vehicle>
+    -name: String 
+    -ID : int
+    -age : int     
+}
+
+class vehicle{
+    - model: String
+    - age : int
+    - color : String
+    - disponibility : Boolean
+    +rent()
+}
+
+@enduml

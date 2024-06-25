@@ -1,0 +1,61 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+URL: //www.plantuml.com/plantuml/dpng/TL7BRW8n3BpdAz9R7rg-e498zCAXeYhqLFKGWhMDbCIhnAb0jFzUBsiW8BZ5uydCs9vaCebAyEgElY60_d6hP28fPRt9MRz2mBJTgKOlABdOVdxfi8Uyoqnw4iBzWtws63EbOWdJkE-qG8TcNIrS6y-HcVnpUD5uXvPT8EtHV2QNRtoMT2ybT5p-7SPOkD1ve8IHHv7CGkLwta4olOB6mujH5qaeRvYTWCCMj3kvygYL_BL51EDY7KRiXYmhH0ycQjXOyUmmoyjOMqBnXeK4iLlhOOgHhRo7nEgm0Li8ZfgrKRMR7UVO3nVNIxpOMJtD4kS3wqQZVqxnIbVEojvcnR2nf2N4_8ESpts016OzYrqX9WwLc0qVvIpDOxLFTRfDSzuGzcWqhkTKOgURtt7Dhk6Zf9f0N9VW_m40
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+@startuml
+!theme vibrant
+
+class Memory{
+- String[] memorylist
+
++ Memory() <constructor>
+
++ getMemory()
++ getMemorySign()
++ getMemoryInstruction()
++ getMemoryRegister()
++ setMemory()
++ setMemoryInstruction()
++ memoryDump()
+}
+
+class Simpletron{
+- Memory memory
+- Operation operation
+- int memoryPosition
+- String instruction
+
++ Simpletron() <constructor>
+
++ main()
+}
+
+class Operation{
+- boolean exc
+- int pos
+- int accumulator
+- int cycleController
+
++executeOperation()
+}
+
+class Instruction{
++ operandToInstruction()
++ instructionToOperand()
++ instructionToOperationCod()
++ instructionToSign()
+}
+
+abstract class IOUtils{
++ readInput()
++ readOperand()
+}
+
+Memory -* Simpletron
+Operation --* Simpletron
+Memory ..> Instruction
+IOUtils -|> Simpletron
+IOUtils -|> Operation
+
+@enduml
